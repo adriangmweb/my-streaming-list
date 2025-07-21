@@ -5,22 +5,22 @@ declare module 'next-auth' {
     user: {
       id: string
       email: string
-      name: string
-      avatar?: string
+      name: string | null
+      avatar?: string | null
     }
   }
 
   interface User {
     id: string
     email: string
-    name: string
-    avatar?: string
+    name: string | null
+    avatar?: string | null
   }
 }
 
 declare module 'next-auth/jwt' {
   interface JWT {
     id: string
-    avatar?: string
+    avatar?: string | null
   }
 }

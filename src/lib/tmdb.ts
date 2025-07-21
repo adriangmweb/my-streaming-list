@@ -3,15 +3,15 @@ import axios from 'axios'
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3'
 const TMDB_API_KEY = process.env.TMDB_API_KEY
 
-if (!TMDB_API_KEY) {
-  throw new Error('TMDB_API_KEY is not defined in environment variables')
+if (!TMDB_API_KEY && process.env.NODE_ENV !== 'production') {
+  console.warn('TMDB_API_KEY is not defined in environment variables. TMDB features will not work.')
 }
 
 const tmdbClient = axios.create({
   baseURL: TMDB_BASE_URL,
-  params: {
+  params: TMDB_API_KEY ? {
     api_key: TMDB_API_KEY,
-  },
+  } : {},
 })
 
 export interface TMDBMovie {

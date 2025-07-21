@@ -67,10 +67,10 @@ export default function DashboardPage() {
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-netflix-red rounded-full flex items-center justify-center">
                   <span className="text-white font-semibold text-sm">
-                    {session.user.name?.charAt(0).toUpperCase()}
+                    {session.user.name?.charAt(0).toUpperCase() || 'U'}
                   </span>
                 </div>
-                <span className="text-sm text-gray-300">{session.user.name}</span>
+                <span className="text-sm text-gray-300">{session.user.name || 'User'}</span>
               </div>
               <button
                 onClick={handleSignOut}
@@ -145,7 +145,7 @@ export default function DashboardPage() {
               className="mb-8"
             >
               <h1 className="text-3xl font-bold mb-2">
-                Welcome back, {session.user.name}!
+                Welcome back, {session.user.name || 'User'}!
               </h1>
               <p className="text-gray-300">
                 Manage your watchlists and discover new content across all your streaming services.

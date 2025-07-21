@@ -118,24 +118,27 @@ For testing purposes, you can use the demo account:
 
 ## 🚀 Deployment
 
-The application is now **deployment-ready** with all build issues fixed!
+The application is **deployment-ready** with all build issues resolved!
 
-### Quick Deploy to Vercel
+### Environment Variables Required
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/streamlist-manager)
+Set these in your deployment platform:
 
-### Manual Deployment
+- `DATABASE_URL` - PostgreSQL connection string (required for production)
+- `NEXTAUTH_SECRET` - Strong secret for JWT tokens
+- `NEXTAUTH_URL` - Your deployment URL
+- `TMDB_API_KEY` - TMDB API key from themoviedb.org
 
-1. Push your code to GitHub
-2. Connect your repository to [Vercel](https://vercel.com)
-3. Add your environment variables in Vercel dashboard:
-   - `DATABASE_URL` - PostgreSQL connection string
-   - `NEXTAUTH_SECRET` - Strong secret for JWT
-   - `NEXTAUTH_URL` - Your deployment URL
-   - `TMDB_API_KEY` - Your TMDB API key
-4. Deploy!
+### Deploy to Vercel
 
-📚 **For detailed deployment instructions**, see [DEPLOYMENT.md](DEPLOYMENT.md)
+1. Push code to GitHub
+2. Import project in Vercel
+3. Add environment variables
+4. Deploy automatically
+
+### Health Check
+
+Once deployed, test with: `GET /api/health`
 
 ### Other Platforms
 

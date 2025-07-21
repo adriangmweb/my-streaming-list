@@ -9,7 +9,7 @@
     "postbuild": "echo 'Build completed successfully'",
     "start": "next start",
     "lint": "next lint",
-    "setup": "node setup.js",
+
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",

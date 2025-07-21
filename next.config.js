@@ -15,6 +15,11 @@ const nextConfig = {
       },
     ],
   },
+  // Optimize for deployment
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: false,
+  // Environment variables
   env: {
     TMDB_API_KEY: process.env.TMDB_API_KEY,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,

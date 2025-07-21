@@ -7,12 +7,23 @@ if (!TMDB_API_KEY && process.env.NODE_ENV !== 'production') {
   console.warn('TMDB_API_KEY is not defined in environment variables. TMDB features will not work.')
 }
 
-const tmdbClient = axios.create({
-  baseURL: TMDB_BASE_URL,
-  params: TMDB_API_KEY ? {
-    api_key: TMDB_API_KEY,
-  } : {},
-})
+const createTmdbClient = () => {
+  if (typeof window === 'undefined' && !TMDB_API_KEY) {
+    // Return a mock client for build time
+    return {
+      get: () => Promise.reject(new Error('TMDB API key not configured'))
+    } as any;
+  }
+  
+  return axios.create({
+    baseURL: TMDB_BASE_URL,
+    params: TMDB_API_KEY ? {
+      api_key: TMDB_API_KEY,
+    } : {},
+  });
+};
+
+const tmdbClient = createTmdbClient();
 
 export interface TMDBMovie {
   id: number

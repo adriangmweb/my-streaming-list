@@ -1,30 +1,7 @@
-'use client'
-
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
 import { Play, Plus, Search, Shield, Users, Zap } from 'lucide-react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 
 export default function HomePage() {
-  const { data: session, status } = useSession()
-  const router = useRouter()
-
-  useEffect(() => {
-    if (status === 'authenticated') {
-      router.push('/dashboard')
-    }
-  }, [status, router])
-
-  if (status === 'loading') {
-    return (
-      <div className="min-h-screen bg-netflix-black flex items-center justify-center">
-        <div className="loading-shimmer w-32 h-32 rounded-full"></div>
-      </div>
-    )
-  }
-
   return (
     <div className="min-h-screen bg-netflix-black text-white">
       {/* Hero Section */}
@@ -36,43 +13,26 @@ export default function HomePage() {
         <div className="absolute inset-0 opacity-10">
           <div className="grid grid-cols-8 gap-4 h-full">
             {Array.from({ length: 32 }).map((_, i) => (
-              <motion.div
+              <div
                 key={i}
-                className="bg-netflix-red rounded"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 0.1, scale: 1 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="bg-netflix-red rounded animate-pulse-slow"
+                style={{ animationDelay: `${i * 0.1}s` }}
               />
             ))}
           </div>
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 gradient-text"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text animate-fade-in">
             StreamList Manager
-          </motion.h1>
+          </h1>
           
-          <motion.p 
-            className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto animate-slide-up">
             Manage all your streaming service watchlists in one secure place. 
             Never lose track of what to watch next across Netflix, Hulu, Prime Video, and more.
-          </motion.p>
+          </p>
 
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
             <Link href="/auth/signup" className="btn-primary flex items-center gap-2 text-lg px-8 py-4">
               <Play className="w-5 h-5" />
               Get Started Free
@@ -80,60 +40,41 @@ export default function HomePage() {
             <Link href="/auth/signin" className="btn-outline flex items-center gap-2 text-lg px-8 py-4">
               Sign In
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-        >
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fade-in">
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <motion.div 
-              className="w-1 h-3 bg-white rounded-full mt-2"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Features Section */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Why Choose StreamList Manager?
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               The ultimate solution for managing your streaming entertainment across all platforms
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <motion.div
+              <div
                 key={feature.title}
                 className="bg-netflix-dark-gray p-8 rounded-lg glass card-hover"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
               >
                 <div className="bg-netflix-red w-12 h-12 rounded-lg flex items-center justify-center mb-6">
                   <feature.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
                 <p className="text-gray-300">{feature.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -142,37 +83,27 @@ export default function HomePage() {
       {/* How It Works Section */}
       <section className="py-20 px-4 bg-netflix-dark-gray">
         <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               How It Works
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Get started in minutes and never lose track of your entertainment again
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {steps.map((step, index) => (
-              <motion.div
+              <div
                 key={step.title}
                 className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
               >
                 <div className="w-16 h-16 bg-netflix-red rounded-full flex items-center justify-center text-2xl font-bold mb-6 mx-auto">
                   {index + 1}
                 </div>
                 <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
                 <p className="text-gray-300">{step.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -181,12 +112,7 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Ready to Organize Your Streaming Life?
             </h2>
@@ -198,7 +124,7 @@ export default function HomePage() {
               <Plus className="w-5 h-5" />
               Create Your Account
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 

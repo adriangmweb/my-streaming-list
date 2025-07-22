@@ -1,241 +1,196 @@
-'use client'
-
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { signIn } from 'next-auth/react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { Eye, EyeOff, Mail, User, Lock, ArrowLeft } from 'lucide-react'
-import toast from 'react-hot-toast'
-
 export default function SignUpPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  })
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-
-    // Validation
-    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
-      toast.error('Please fill in all fields')
-      setIsLoading(false)
-      return
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      toast.error('Passwords do not match')
-      setIsLoading(false)
-      return
-    }
-
-    if (formData.password.length < 8) {
-      toast.error('Password must be at least 8 characters long')
-      setIsLoading(false)
-      return
-    }
-
-    try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-        }),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
-        toast.success('Account created successfully!')
-        
-        // Sign in the user automatically
-        const result = await signIn('credentials', {
-          email: formData.email,
-          password: formData.password,
-          redirect: false,
-        })
-
-        if (result?.ok) {
-          router.push('/dashboard')
-        } else {
-          router.push('/auth/signin')
-        }
-      } else {
-        toast.error(data.error || 'Something went wrong')
-      }
-    } catch (error) {
-      toast.error('Network error. Please try again.')
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
   return (
-    <div className="min-h-screen bg-netflix-black flex items-center justify-center px-4">
-      <div className="w-full max-w-md">
-        {/* Back to Home */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-8"
-        >
-          <Link 
-            href="/" 
-            className="inline-flex items-center text-gray-300 hover:text-white transition-colors"
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%)',
+      color: '#ffffff',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '2rem'
+    }}>
+      <div style={{
+        background: 'rgba(255,255,255,0.05)',
+        border: '1px solid rgba(229,9,20,0.3)',
+        borderRadius: '16px',
+        padding: '3rem',
+        width: '100%',
+        maxWidth: '400px'
+      }}>
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          <h1 style={{
+            fontSize: '1.8rem',
+            fontWeight: 'bold',
+            background: 'linear-gradient(45deg, #e50914, #ff6b6b)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            marginBottom: '0.5rem'
+          }}>
+            StreamList Manager
+          </h1>
+          <h2 style={{
+            fontSize: '1.5rem',
+            fontWeight: '600',
+            color: '#ffffff',
+            margin: 0
+          }}>
+            Create Account
+          </h2>
+        </div>
+
+        <div style={{
+          background: 'rgba(229,9,20,0.1)',
+          border: '1px solid rgba(229,9,20,0.3)',
+          borderRadius: '8px',
+          padding: '1.5rem',
+          marginBottom: '2rem',
+          textAlign: 'center'
+        }}>
+          <p style={{
+            color: '#cccccc',
+            margin: 0,
+            fontSize: '0.9rem'
+          }}>
+            🚧 Account creation is being set up.<br/>
+            This is a preview of the StreamList Manager interface.
+          </p>
+        </div>
+
+        <form style={{ marginBottom: '2rem' }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '0.5rem',
+              color: '#cccccc',
+              fontSize: '0.9rem'
+            }}>
+              Full Name
+            </label>
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              style={{
+                width: '100%',
+                padding: '12px',
+                background: 'rgba(255,255,255,0.1)',
+                border: '1px solid rgba(255,255,255,0.2)',
+                borderRadius: '6px',
+                color: '#ffffff',
+                fontSize: '1rem',
+                boxSizing: 'border-box'
+              }}
+            />
+          </div>
+
+          <div style={{ marginBottom: '1rem' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '0.5rem',
+              color: '#cccccc',
+              fontSize: '0.9rem'
+            }}>
+              Email
+            </label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              style={{
+                width: '100%',
+                padding: '12px',
+                background: 'rgba(255,255,255,0.1)',
+                border: '1px solid rgba(255,255,255,0.2)',
+                borderRadius: '6px',
+                color: '#ffffff',
+                fontSize: '1rem',
+                boxSizing: 'border-box'
+              }}
+            />
+          </div>
+
+          <div style={{ marginBottom: '1.5rem' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '0.5rem',
+              color: '#cccccc',
+              fontSize: '0.9rem'
+            }}>
+              Password
+            </label>
+            <input
+              type="password"
+              placeholder="Create a password"
+              style={{
+                width: '100%',
+                padding: '12px',
+                background: 'rgba(255,255,255,0.1)',
+                border: '1px solid rgba(255,255,255,0.2)',
+                borderRadius: '6px',
+                color: '#ffffff',
+                fontSize: '1rem',
+                boxSizing: 'border-box'
+              }}
+            />
+          </div>
+
+          <button
+            type="button"
+            onClick={() => alert('Account creation will be available soon!')}
+            style={{
+              width: '100%',
+              backgroundColor: '#e50914',
+              color: 'white',
+              padding: '12px',
+              border: 'none',
+              borderRadius: '6px',
+              fontSize: '1rem',
+              fontWeight: '600',
+              cursor: 'pointer'
+            }}
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
-          </Link>
-        </motion.div>
+            Create Account
+          </button>
+        </form>
 
-        {/* Sign Up Form */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="bg-netflix-dark-gray p-8 rounded-lg glass"
-        >
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold gradient-text mb-2">Create Account</h1>
-            <p className="text-gray-300">Join StreamList Manager today</p>
-          </div>
+        <div style={{
+          textAlign: 'center',
+          paddingTop: '1rem',
+          borderTop: '1px solid rgba(255,255,255,0.1)'
+        }}>
+          <p style={{
+            color: '#888',
+            fontSize: '0.9rem',
+            margin: '0 0 1rem 0'
+          }}>
+            Already have an account?
+          </p>
+          <a
+            href="/auth/signin"
+            style={{
+              color: '#e50914',
+              textDecoration: 'none',
+              fontWeight: '600'
+            }}
+          >
+            Sign In
+          </a>
+        </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name Field */}
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                Full Name
-              </label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="input-field pl-12"
-                  placeholder="Enter your full name"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Email Field */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                Email Address
-              </label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="input-field pl-12"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Password Field */}
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
-                Password
-              </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  className="input-field pl-12 pr-12"
-                  placeholder="Create a password"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300"
-                >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
-              </div>
-              <p className="text-xs text-gray-400 mt-1">Must be at least 8 characters long</p>
-            </div>
-
-            {/* Confirm Password Field */}
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-300 mb-2">
-                Confirm Password
-              </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  className="input-field pl-12 pr-12"
-                  placeholder="Confirm your password"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300"
-                >
-                  {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                </button>
-              </div>
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full btn-primary py-3 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLoading ? 'Creating Account...' : 'Create Account'}
-            </button>
-          </form>
-
-          {/* Sign In Link */}
-          <div className="mt-6 text-center">
-            <p className="text-gray-300">
-              Already have an account?{' '}
-              <Link href="/auth/signin" className="text-netflix-red hover:text-netflix-dark-red transition-colors">
-                Sign In
-              </Link>
-            </p>
-          </div>
-        </motion.div>
+        <div style={{
+          textAlign: 'center',
+          marginTop: '2rem'
+        }}>
+          <a
+            href="/"
+            style={{
+              color: '#888',
+              textDecoration: 'none',
+              fontSize: '0.9rem'
+            }}
+          >
+            ← Back to Home
+          </a>
+        </div>
       </div>
     </div>
   )

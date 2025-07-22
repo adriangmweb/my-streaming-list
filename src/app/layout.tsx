@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { Providers } from './providers'
-import { Toaster } from 'react-hot-toast'
 
 export const metadata: Metadata = {
   title: 'StreamList Manager - Manage Your Streaming Watchlists',
@@ -34,32 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body>
-        <Providers>
-          {children}
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              className: '',
-              style: {
-                background: '#222222',
-                color: '#fff',
-                border: '1px solid #E50914',
-              },
-              success: {
-                iconTheme: {
-                  primary: '#E50914',
-                  secondary: '#fff',
-                },
-              },
-              error: {
-                iconTheme: {
-                  primary: '#ff4444',
-                  secondary: '#fff',
-                },
-              },
-            }}
-          />
-        </Providers>
+        {children}
       </body>
     </html>
   )

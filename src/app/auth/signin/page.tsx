@@ -43,19 +43,19 @@ export default function SignInPage() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '2rem'
+      padding: 'clamp(1rem, 4vw, 2rem)'
     }}>
       <div style={{
         background: 'rgba(255,255,255,0.05)',
         border: '1px solid rgba(229,9,20,0.3)',
         borderRadius: '16px',
-        padding: '3rem',
+        padding: 'clamp(2rem, 5vw, 3rem)',
         width: '100%',
-        maxWidth: '400px'
+        maxWidth: '420px'
       }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <h1 style={{
-            fontSize: '1.8rem',
+            fontSize: 'clamp(1.5rem, 4vw, 1.8rem)',
             fontWeight: 'bold',
             background: 'linear-gradient(45deg, #e50914, #ff6b6b)',
             WebkitBackgroundClip: 'text',
@@ -64,7 +64,11 @@ export default function SignInPage() {
           }}>
             Welcome Back
           </h1>
-          <p style={{ color: '#cccccc', fontSize: '0.9rem' }}>
+          <p style={{ 
+            color: '#cccccc', 
+            fontSize: 'clamp(0.85rem, 2vw, 0.9rem)',
+            lineHeight: '1.4'
+          }}>
             Sign in to access your StreamList Manager
           </p>
         </div>
@@ -75,17 +79,23 @@ export default function SignInPage() {
               backgroundColor: 'rgba(239, 68, 68, 0.1)',
               border: '1px solid rgba(239, 68, 68, 0.3)',
               color: '#ef4444',
-              padding: '0.75rem',
+              padding: 'clamp(0.75rem, 2vw, 1rem)',
               borderRadius: '8px',
               marginBottom: '1rem',
-              fontSize: '0.9rem'
+              fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
+              lineHeight: '1.4'
             }}>
               {error}
             </div>
           )}
 
           <div style={{ marginBottom: '1rem' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: '#cccccc' }}>
+            <label style={{ 
+              display: 'block', 
+              marginBottom: '0.5rem', 
+              fontSize: 'clamp(0.85rem, 2vw, 0.9rem)', 
+              color: '#cccccc' 
+            }}>
               Email
             </label>
             <input
@@ -96,18 +106,25 @@ export default function SignInPage() {
               placeholder="Enter your email"
               style={{
                 width: '100%',
-                padding: '0.75rem',
+                padding: 'clamp(0.75rem, 2vw, 1rem)',
                 backgroundColor: 'rgba(255,255,255,0.1)',
                 border: '1px solid rgba(255,255,255,0.2)',
                 borderRadius: '8px',
                 color: '#ffffff',
-                fontSize: '1rem'
+                fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                minHeight: '44px',
+                boxSizing: 'border-box'
               }}
             />
           </div>
 
           <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', color: '#cccccc' }}>
+            <label style={{ 
+              display: 'block', 
+              marginBottom: '0.5rem', 
+              fontSize: 'clamp(0.85rem, 2vw, 0.9rem)', 
+              color: '#cccccc' 
+            }}>
               Password
             </label>
             <input
@@ -118,12 +135,14 @@ export default function SignInPage() {
               placeholder="Enter your password"
               style={{
                 width: '100%',
-                padding: '0.75rem',
+                padding: 'clamp(0.75rem, 2vw, 1rem)',
                 backgroundColor: 'rgba(255,255,255,0.1)',
                 border: '1px solid rgba(255,255,255,0.2)',
                 borderRadius: '8px',
                 color: '#ffffff',
-                fontSize: '1rem'
+                fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                minHeight: '44px',
+                boxSizing: 'border-box'
               }}
             />
           </div>
@@ -135,13 +154,14 @@ export default function SignInPage() {
               width: '100%',
               backgroundColor: loading ? '#666' : '#e50914',
               color: '#ffffff',
-              padding: '0.875rem',
+              padding: 'clamp(0.875rem, 2vw, 1rem)',
               border: 'none',
               borderRadius: '8px',
-              fontSize: '1rem',
+              fontSize: 'clamp(0.9rem, 2vw, 1rem)',
               fontWeight: '600',
               cursor: loading ? 'not-allowed' : 'pointer',
-              transition: 'background-color 0.2s'
+              transition: 'background-color 0.2s',
+              minHeight: '48px'
             }}
           >
             {loading ? 'Signing In...' : 'Sign In'}
@@ -152,29 +172,63 @@ export default function SignInPage() {
           backgroundColor: 'rgba(59, 130, 246, 0.1)',
           border: '1px solid rgba(59, 130, 246, 0.3)',
           borderRadius: '8px',
-          padding: '1rem',
+          padding: 'clamp(1rem, 3vw, 1.25rem)',
           marginBottom: '1.5rem'
         }}>
-          <p style={{ color: '#60a5fa', fontSize: '0.85rem', marginBottom: '0.5rem', fontWeight: '600' }}>
+          <p style={{ 
+            color: '#60a5fa', 
+            fontSize: 'clamp(0.8rem, 2vw, 0.85rem)', 
+            marginBottom: '0.5rem', 
+            fontWeight: '600' 
+          }}>
             Demo Credentials:
           </p>
-          <p style={{ color: '#cccccc', fontSize: '0.8rem', fontFamily: 'monospace' }}>
+          <p style={{ 
+            color: '#cccccc', 
+            fontSize: 'clamp(0.75rem, 2vw, 0.8rem)', 
+            fontFamily: 'monospace',
+            lineHeight: '1.4',
+            wordBreak: 'break-all'
+          }}>
             Email: demo@streamlist.com
           </p>
-          <p style={{ color: '#cccccc', fontSize: '0.8rem', fontFamily: 'monospace' }}>
+          <p style={{ 
+            color: '#cccccc', 
+            fontSize: 'clamp(0.75rem, 2vw, 0.8rem)', 
+            fontFamily: 'monospace',
+            lineHeight: '1.4'
+          }}>
             Password: demo123
           </p>
         </div>
 
         <div style={{ textAlign: 'center' }}>
-          <p style={{ color: '#888', fontSize: '0.9rem' }}>
+          <p style={{ 
+            color: '#888', 
+            fontSize: 'clamp(0.85rem, 2vw, 0.9rem)',
+            marginBottom: '1rem'
+          }}>
             Don't have an account?{' '}
-            <a href="/auth/signup" style={{ color: '#e50914', textDecoration: 'none' }}>
+            <a href="/auth/signup" style={{ 
+              color: '#e50914', 
+              textDecoration: 'none',
+              fontWeight: '500'
+            }}>
               Sign up
             </a>
           </p>
-          <p style={{ marginTop: '1rem' }}>
-            <a href="/" style={{ color: '#888', textDecoration: 'none', fontSize: '0.9rem' }}>
+          <p>
+            <a href="/" style={{ 
+              color: '#888', 
+              textDecoration: 'none', 
+              fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.25rem',
+              padding: '0.5rem',
+              minHeight: '44px',
+              justifyContent: 'center'
+            }}>
               ← Back to home
             </a>
           </p>

@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     title: 'StreamList Manager - Manage Your Streaming Watchlists',
     description: 'Securely manage and track your Netflix, Hulu, Prime Video, and other streaming service watchlists in one place.',
   },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
 }
 
 export default function RootLayout({
@@ -31,6 +36,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      </head>
       <body>
         {children}
       </body>

@@ -27,161 +27,153 @@ export default function SignUpPage() {
             WebkitTextFillColor: 'transparent',
             marginBottom: '0.5rem'
           }}>
-            StreamList Manager
+            Join StreamList
           </h1>
-          <h2 style={{
-            fontSize: '1.5rem',
-            fontWeight: '600',
-            color: '#ffffff',
-            margin: 0
-          }}>
-            Create Account
-          </h2>
-        </div>
-
-        <div style={{
-          background: 'rgba(229,9,20,0.1)',
-          border: '1px solid rgba(229,9,20,0.3)',
-          borderRadius: '8px',
-          padding: '1.5rem',
-          marginBottom: '2rem',
-          textAlign: 'center'
-        }}>
           <p style={{
             color: '#cccccc',
-            margin: 0,
-            fontSize: '0.9rem'
+            margin: 0
           }}>
-            🚧 Account creation is being set up.<br/>
-            This is a preview of the StreamList Manager interface.
+            Create your account to get started
           </p>
         </div>
 
-        <form style={{ marginBottom: '2rem' }}>
-          <div style={{ marginBottom: '1rem' }}>
+        <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div>
             <label style={{
               display: 'block',
               marginBottom: '0.5rem',
-              color: '#cccccc',
+              color: '#ffffff',
               fontSize: '0.9rem'
             }}>
               Full Name
             </label>
             <input
               type="text"
-              placeholder="Enter your full name"
+              required
               style={{
                 width: '100%',
                 padding: '12px',
+                border: '1px solid #333',
+                borderRadius: '8px',
                 background: 'rgba(255,255,255,0.1)',
-                border: '1px solid rgba(255,255,255,0.2)',
-                borderRadius: '6px',
                 color: '#ffffff',
                 fontSize: '1rem',
+                outline: 'none',
                 boxSizing: 'border-box'
               }}
+              placeholder="Enter your full name"
             />
           </div>
 
-          <div style={{ marginBottom: '1rem' }}>
+          <div>
             <label style={{
               display: 'block',
               marginBottom: '0.5rem',
-              color: '#cccccc',
+              color: '#ffffff',
               fontSize: '0.9rem'
             }}>
               Email
             </label>
             <input
               type="email"
-              placeholder="Enter your email"
+              required
               style={{
                 width: '100%',
                 padding: '12px',
+                border: '1px solid #333',
+                borderRadius: '8px',
                 background: 'rgba(255,255,255,0.1)',
-                border: '1px solid rgba(255,255,255,0.2)',
-                borderRadius: '6px',
                 color: '#ffffff',
                 fontSize: '1rem',
+                outline: 'none',
                 boxSizing: 'border-box'
               }}
+              placeholder="Enter your email"
             />
           </div>
-
-          <div style={{ marginBottom: '1.5rem' }}>
+          
+          <div>
             <label style={{
               display: 'block',
               marginBottom: '0.5rem',
-              color: '#cccccc',
+              color: '#ffffff',
               fontSize: '0.9rem'
             }}>
               Password
             </label>
             <input
               type="password"
-              placeholder="Create a password"
+              required
               style={{
                 width: '100%',
                 padding: '12px',
+                border: '1px solid #333',
+                borderRadius: '8px',
                 background: 'rgba(255,255,255,0.1)',
-                border: '1px solid rgba(255,255,255,0.2)',
-                borderRadius: '6px',
                 color: '#ffffff',
                 fontSize: '1rem',
+                outline: 'none',
                 boxSizing: 'border-box'
               }}
+              placeholder="Create a strong password"
             />
           </div>
 
-          <button
-            type="button"
-            onClick={() => alert('Account creation will be available soon!')}
-            style={{
-              width: '100%',
-              backgroundColor: '#e50914',
-              color: 'white',
-              padding: '12px',
-              border: 'none',
-              borderRadius: '6px',
-              fontSize: '1rem',
-              fontWeight: '600',
-              cursor: 'pointer'
-            }}
-          >
-            Create Account
-          </button>
+          <div style={{
+            background: 'rgba(229,9,20,0.1)',
+            border: '1px solid rgba(229,9,20,0.3)',
+            borderRadius: '8px',
+            padding: '1rem',
+            textAlign: 'center',
+            marginTop: '1rem'
+          }}>
+            <p style={{
+              color: '#e50914',
+              margin: 0,
+              fontSize: '0.9rem'
+            }}>
+              🚧 Account creation will be available soon!
+            </p>
+            <p style={{
+              color: '#cccccc',
+              margin: '0.5rem 0 0 0',
+              fontSize: '0.8rem'
+            }}>
+              The app is in development mode. Stay tuned!
+            </p>
+          </div>
         </form>
 
         <div style={{
           textAlign: 'center',
-          paddingTop: '1rem',
+          marginTop: '2rem',
+          paddingTop: '2rem',
           borderTop: '1px solid rgba(255,255,255,0.1)'
         }}>
           <p style={{
-            color: '#888',
-            fontSize: '0.9rem',
-            margin: '0 0 1rem 0'
+            color: '#cccccc',
+            margin: 0,
+            fontSize: '0.9rem'
           }}>
-            Already have an account?
+            Already have an account?{' '}
+            <a 
+              href="/auth/signin" 
+              style={{
+                color: '#e50914',
+                textDecoration: 'none'
+              }}
+            >
+              Sign in
+            </a>
           </p>
-          <a
-            href="/auth/signin"
-            style={{
-              color: '#e50914',
-              textDecoration: 'none',
-              fontWeight: '600'
-            }}
-          >
-            Sign In
-          </a>
         </div>
 
         <div style={{
           textAlign: 'center',
-          marginTop: '2rem'
+          marginTop: '1rem'
         }}>
-          <a
-            href="/"
+          <a 
+            href="/" 
             style={{
               color: '#888',
               textDecoration: 'none',

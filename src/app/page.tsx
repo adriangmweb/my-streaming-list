@@ -14,7 +14,7 @@ export default function LandingPage() {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        padding: '2rem',
+        padding: 'clamp(1rem, 4vw, 2rem)',
         position: 'relative'
       }}>
         {/* Background Effects */}
@@ -29,9 +29,9 @@ export default function LandingPage() {
         }} />
         
         {/* Content */}
-        <div style={{ position: 'relative', maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ position: 'relative', maxWidth: '800px', margin: '0 auto', width: '100%' }}>
           {/* Logo/Brand */}
-          <div style={{ marginBottom: '3rem' }}>
+          <div style={{ marginBottom: 'clamp(2rem, 6vw, 3rem)' }}>
             <h1 style={{
               fontSize: 'clamp(2.5rem, 8vw, 5rem)',
               fontWeight: '900',
@@ -45,7 +45,7 @@ export default function LandingPage() {
               StreamList
             </h1>
             <p style={{
-              fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
+              fontSize: 'clamp(1rem, 3vw, 1.5rem)',
               color: '#ffffff',
               fontWeight: '300',
               letterSpacing: '0.1em'
@@ -56,11 +56,12 @@ export default function LandingPage() {
 
           {/* Tagline */}
           <h2 style={{
-            fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+            fontSize: 'clamp(1.25rem, 4vw, 2.5rem)',
             fontWeight: '600',
             marginBottom: '1.5rem',
             lineHeight: '1.2',
-            color: '#ffffff'
+            color: '#ffffff',
+            padding: '0 1rem'
           }}>
             Manage All Your Streaming Watchlists
             <br />
@@ -69,12 +70,13 @@ export default function LandingPage() {
 
           {/* Description */}
           <p style={{
-            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+            fontSize: 'clamp(0.9rem, 2vw, 1.25rem)',
             color: '#cccccc',
-            marginBottom: '3rem',
+            marginBottom: 'clamp(2rem, 5vw, 3rem)',
             lineHeight: '1.6',
             maxWidth: '600px',
-            margin: '0 auto 3rem auto'
+            margin: '0 auto 3rem auto',
+            padding: '0 1rem'
           }}>
             Connect your Netflix, Hulu, Prime Video, and other streaming accounts. 
             Keep track of what you want to watch, manage your lists, and never lose 
@@ -82,15 +84,15 @@ export default function LandingPage() {
           </p>
 
           {/* CTA Button */}
-          <div style={{ marginBottom: '3rem' }}>
+          <div style={{ marginBottom: 'clamp(2rem, 5vw, 3rem)', padding: '0 1rem' }}>
             <a 
               href="/dashboard"
               style={{
-                display: 'inline-block',
+                display: 'flex',
                 backgroundColor: '#e50914',
                 color: '#ffffff',
-                padding: '1rem 3rem',
-                fontSize: '1.25rem',
+                padding: 'clamp(0.875rem, 2vw, 1rem) clamp(2rem, 5vw, 3rem)',
+                fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                 fontWeight: '600',
                 textDecoration: 'none',
                 borderRadius: '8px',
@@ -99,7 +101,10 @@ export default function LandingPage() {
                 transition: 'all 0.3s ease',
                 boxShadow: '0 8px 32px rgba(229,9,20,0.3)',
                 textTransform: 'uppercase',
-                letterSpacing: '0.05em'
+                letterSpacing: '0.05em',
+                minHeight: '44px',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
             >
               Launch App
@@ -109,22 +114,28 @@ export default function LandingPage() {
           {/* Secondary Actions */}
           <div style={{
             display: 'flex',
-            gap: '1.5rem',
+            gap: 'clamp(1rem, 3vw, 1.5rem)',
             justifyContent: 'center',
             flexWrap: 'wrap',
-            marginBottom: '4rem'
+            marginBottom: 'clamp(3rem, 6vw, 4rem)',
+            padding: '0 1rem'
           }}>
             <a 
               href="/auth/signin"
               style={{
                 color: '#ffffff',
                 textDecoration: 'none',
-                padding: '0.75rem 2rem',
+                padding: 'clamp(0.75rem, 2vw, 0.875rem) clamp(1.5rem, 4vw, 2rem)',
                 border: '2px solid rgba(255,255,255,0.2)',
                 borderRadius: '8px',
-                fontSize: '1rem',
+                fontSize: 'clamp(0.9rem, 2vw, 1rem)',
                 fontWeight: '500',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minWidth: '120px'
               }}
             >
               Sign In
@@ -134,12 +145,17 @@ export default function LandingPage() {
               style={{
                 color: '#ffffff',
                 textDecoration: 'none',
-                padding: '0.75rem 2rem',
+                padding: 'clamp(0.75rem, 2vw, 0.875rem) clamp(1.5rem, 4vw, 2rem)',
                 border: '2px solid rgba(229,9,20,0.5)',
                 borderRadius: '8px',
-                fontSize: '1rem',
+                fontSize: 'clamp(0.9rem, 2vw, 1rem)',
                 fontWeight: '500',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minWidth: '120px'
               }}
             >
               Sign Up
@@ -149,25 +165,26 @@ export default function LandingPage() {
           {/* Features */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '2rem',
-            marginTop: '4rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
+            gap: 'clamp(1.5rem, 3vw, 2rem)',
+            marginTop: 'clamp(3rem, 6vw, 4rem)',
             maxWidth: '900px',
-            margin: '4rem auto 0'
+            margin: '4rem auto 0',
+            padding: '0 1rem'
           }}>
             <div style={{
-              padding: '2rem',
+              padding: 'clamp(1.5rem, 4vw, 2rem)',
               background: 'rgba(255,255,255,0.05)',
               border: '1px solid rgba(255,255,255,0.1)',
               borderRadius: '12px',
               textAlign: 'center'
             }}>
               <div style={{
-                fontSize: '2.5rem',
+                fontSize: 'clamp(2rem, 5vw, 2.5rem)',
                 marginBottom: '1rem'
               }}>🎬</div>
               <h3 style={{
-                fontSize: '1.25rem',
+                fontSize: 'clamp(1.1rem, 3vw, 1.25rem)',
                 fontWeight: '600',
                 marginBottom: '0.5rem',
                 color: '#ffffff'
@@ -176,7 +193,7 @@ export default function LandingPage() {
               </h3>
               <p style={{
                 color: '#cccccc',
-                fontSize: '0.9rem',
+                fontSize: 'clamp(0.85rem, 2vw, 0.9rem)',
                 lineHeight: '1.5'
               }}>
                 Connect Netflix, Hulu, Prime Video, Disney+, and more streaming services
@@ -184,18 +201,18 @@ export default function LandingPage() {
             </div>
 
             <div style={{
-              padding: '2rem',
+              padding: 'clamp(1.5rem, 4vw, 2rem)',
               background: 'rgba(255,255,255,0.05)',
               border: '1px solid rgba(255,255,255,0.1)',
               borderRadius: '12px',
               textAlign: 'center'
             }}>
               <div style={{
-                fontSize: '2.5rem',
+                fontSize: 'clamp(2rem, 5vw, 2.5rem)',
                 marginBottom: '1rem'
               }}>🔒</div>
               <h3 style={{
-                fontSize: '1.25rem',
+                fontSize: 'clamp(1.1rem, 3vw, 1.25rem)',
                 fontWeight: '600',
                 marginBottom: '0.5rem',
                 color: '#ffffff'
@@ -204,7 +221,7 @@ export default function LandingPage() {
               </h3>
               <p style={{
                 color: '#cccccc',
-                fontSize: '0.9rem',
+                fontSize: 'clamp(0.85rem, 2vw, 0.9rem)',
                 lineHeight: '1.5'
               }}>
                 Your streaming accounts are protected with enterprise-grade security
@@ -212,18 +229,18 @@ export default function LandingPage() {
             </div>
 
             <div style={{
-              padding: '2rem',
+              padding: 'clamp(1.5rem, 4vw, 2rem)',
               background: 'rgba(255,255,255,0.05)',
               border: '1px solid rgba(255,255,255,0.1)',
               borderRadius: '12px',
               textAlign: 'center'
             }}>
               <div style={{
-                fontSize: '2.5rem',
+                fontSize: 'clamp(2rem, 5vw, 2.5rem)',
                 marginBottom: '1rem'
               }}>📱</div>
               <h3 style={{
-                fontSize: '1.25rem',
+                fontSize: 'clamp(1.1rem, 3vw, 1.25rem)',
                 fontWeight: '600',
                 marginBottom: '0.5rem',
                 color: '#ffffff'
@@ -232,7 +249,7 @@ export default function LandingPage() {
               </h3>
               <p style={{
                 color: '#cccccc',
-                fontSize: '0.9rem',
+                fontSize: 'clamp(0.85rem, 2vw, 0.9rem)',
                 lineHeight: '1.5'
               }}>
                 Keep all your watchlists organized and easily accessible
@@ -244,12 +261,13 @@ export default function LandingPage() {
         {/* Footer */}
         <div style={{
           position: 'absolute',
-          bottom: '2rem',
+          bottom: 'clamp(1rem, 3vw, 2rem)',
           left: '50%',
           transform: 'translateX(-50%)',
           textAlign: 'center',
           color: '#666666',
-          fontSize: '0.9rem'
+          fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
+          padding: '0 1rem'
         }}>
           <p>StreamList Manager v1.0 • Built with Next.js</p>
         </div>

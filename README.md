@@ -1,26 +1,30 @@
-# StreamList Manager 🎬
+# StreamList Manager
 
-A modern, secure web application for managing your streaming service watchlists across platforms like Netflix, Hulu, Prime Video, Disney+, and more. Built with Next.js, TypeScript, and Prisma.
+A modern, Netflix-inspired web application for managing your streaming service watchlists across multiple platforms.
 
 ## ✨ Features
 
-- **🔐 Secure Authentication**: User registration and login with NextAuth.js
-- **📱 Responsive Design**: Modern, Netflix-inspired UI that works on all devices
-- **🎭 Multi-Platform Support**: Manage watchlists from multiple streaming services
-- **🔍 Smart Search**: Search for movies and TV shows using TMDB API
-- **📚 Custom Lists**: Create and organize multiple watchlists
-- **⭐ Rating System**: Rate and review your watched content
-- **🎯 Recommendations**: Get personalized content recommendations
-- **📊 Progress Tracking**: Track what you're watching and what you've completed
+- **🎬 Discover Content** - Browse movies and TV shows from various streaming services
+- **📝 Personal Watchlist** - Add and remove content from your watchlist with one click
+- **🔗 Multi-Platform Support** - Track content from Netflix, Prime Video, Disney+, Apple TV+, and more
+- **🔐 Demo Authentication** - Ready-to-use demo login for testing all features
+- **📱 Responsive Design** - Beautiful UI that works on desktop and mobile
+- **⚡ Fast & Lightweight** - Built with Next.js 14 and optimized for performance
 
-## 🚀 Quick Start
+## 🚀 Demo
 
-### Prerequisites
+Try the live demo with these credentials:
+- **Email:** `demo@streamlist.com`
+- **Password:** `demo123`
 
-- Node.js 18+ installed
-- A TMDB API key (free from [The Movie Database](https://www.themoviedb.org/settings/api))
+## 🛠️ Tech Stack
 
-### Installation
+- **Frontend:** Next.js 14, React 18, TypeScript
+- **Styling:** Tailwind CSS with custom Netflix-inspired theme
+- **Authentication:** Client-side demo authentication with localStorage
+- **Deployment:** Vercel-optimized with static generation
+
+## 📦 Installation
 
 1. **Clone the repository**
    ```bash
@@ -33,148 +37,68 @@ A modern, secure web application for managing your streaming service watchlists 
    npm install
    ```
 
-3. **Set up environment variables**
-   ```bash
-   cp .env.example .env.local
-   ```
-   
-   Edit `.env.local` and add your TMDB API key:
-   ```env
-   TMDB_API_KEY="your-actual-tmdb-api-key-here"
-   NEXTAUTH_SECRET="your-nextauth-secret-here"
-   ```
-
-4. **Set up the database**
-   ```bash
-   npm run db:generate
-   npm run db:push
-   ```
-
-5. **Start the development server**
+3. **Start development server**
    ```bash
    npm run dev
    ```
 
-6. **Open your browser**
-   Visit [http://localhost:3000](http://localhost:3000)
+4. **Open in browser**
+   ```
+   http://localhost:3000
+   ```
 
-## 🛠️ Tech Stack
+## 🏗️ Build & Deploy
 
-- **Frontend**: Next.js 14, React 18, TypeScript
-- **Styling**: Tailwind CSS with custom Netflix-inspired theme
-- **Authentication**: NextAuth.js with secure JWT tokens
-- **Database**: SQLite with Prisma ORM (easily configurable for PostgreSQL/MySQL)
-- **API**: TMDB (The Movie Database) for movie/TV show data
-- **State Management**: Zustand + React Query for efficient data fetching
-- **Animations**: Framer Motion for smooth interactions
-- **Icons**: Lucide React for consistent iconography
+```bash
+# Build for production
+npm run build
 
-## 📝 Getting Your TMDB API Key
+# Start production server
+npm start
+```
 
-1. Create a free account at [The Movie Database](https://www.themoviedb.org/)
-2. Go to your [API settings](https://www.themoviedb.org/settings/api)
-3. Request an API key (choose "Developer" option)
-4. Copy your API key and add it to your `.env.local` file
+The app is optimized for Vercel deployment with static generation for maximum performance.
 
-## 🔧 Available Scripts
+## 📱 Usage
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run db:generate` - Generate Prisma client
-- `npm run db:push` - Push database schema
-- `npm run db:migrate` - Run database migrations
-- `npm run db:studio` - Open Prisma Studio
+1. **Visit the homepage** - Beautiful landing page with app overview
+2. **Click "Launch App"** - Access the main application
+3. **Sign in with demo credentials** - Use the provided demo account
+4. **Explore features:**
+   - **Discover:** Browse available content
+   - **Watchlist:** Manage your saved content
+   - **Services:** View connected streaming platforms
 
-## 🎯 How It Works
+## 📂 Project Structure
 
-### Current Implementation
-Since Netflix and most streaming services don't provide public APIs for accessing user account data, this application currently:
+```
+src/
+├── app/
+│   ├── auth/
+│   │   ├── signin/          # Demo login page
+│   │   └── signup/          # Demo signup redirect
+│   ├── dashboard/           # Main app interface
+│   ├── not-found.tsx        # Custom 404 page
+│   ├── page.tsx            # Landing page
+│   ├── layout.tsx          # Root layout
+│   └── globals.css         # Global styles
+```
 
-1. **Manual List Management**: Users can manually add movies/TV shows to their watchlists
-2. **TMDB Integration**: Rich metadata from The Movie Database API
-3. **Secure Storage**: All user data is securely stored in your database
-4. **Cross-Platform Organization**: Organize content by streaming service or custom categories
+## 🎨 Design System
 
-### Future Enhancements
-- **Browser Extension**: Auto-detect and sync watchlists from streaming platforms
-- **Web Scraping**: Carefully implemented scraping with user consent
-- **Third-Party Integrations**: Integration with services like Trakt.tv
-- **Mobile App**: React Native companion app
+- **Colors:** Netflix-inspired red (#E50914) with dark theme
+- **Typography:** System fonts for optimal performance
+- **Layout:** CSS Grid and Flexbox for responsive design
+- **Animations:** Smooth transitions and hover effects
 
-## 🔒 Security & Privacy
+## 🔧 Configuration
 
-- **No Password Storage**: We never store streaming service passwords
-- **Encrypted Data**: All sensitive data is encrypted
-- **GDPR Compliant**: Built with privacy in mind
-- **Secure Authentication**: JWT tokens with secure session management
-
-## 🌟 Demo Account
-
-For testing purposes, you can use the demo account:
-- **Email**: demo@streamlist.com
-- **Password**: demo123456
-
-## 🚀 Deployment
-
-The application is **deployment-ready** with all build issues resolved!
-
-### Environment Variables Required
-
-Set these in your deployment platform:
-
-- `DATABASE_URL` - PostgreSQL connection string (required for production)
-- `NEXTAUTH_SECRET` - Strong secret for JWT tokens
-- `NEXTAUTH_URL` - Your deployment URL
-- `TMDB_API_KEY` - TMDB API key from themoviedb.org
-
-### Deploy to Vercel
-
-1. Push code to GitHub
-2. Import project in Vercel
-3. Add environment variables
-4. Deploy automatically
-
-### Health Check
-
-Once deployed, test with: `GET /api/health`
-
-### Other Platforms
-
-This app can be deployed on any platform that supports Node.js:
-- **Netlify**: Use `@netlify/plugin-nextjs`
-- **Railway**: Direct deployment support
-- **DigitalOcean App Platform**: Node.js support
-- **AWS**: Use AWS Amplify or Lambda
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+The app is designed to work out of the box with no external dependencies or environment variables required.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the movie/TV show API
-- [Netflix](https://netflix.com) for design inspiration
-- The open-source community for the amazing tools and libraries
-
-## 📞 Support
-
-If you have any questions or need help, please:
-1. Check the [Issues](https://github.com/your-username/streamlist-manager/issues) page
-2. Create a new issue if your question isn't already answered
-3. Join our community discussions
+MIT License - feel free to use this project for your own purposes.
 
 ---
 
-**Note**: This application is not affiliated with Netflix or any other streaming service. It's an independent tool for organizing your entertainment preferences.
+**StreamList Manager** - Simplifying your streaming experience ✨

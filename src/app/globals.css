@@ -2,14 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Using system fonts instead of Google Fonts for better reliability */
-
 :root {
   --netflix-red: #E50914;
-  --netflix-dark-red: #B20710;
   --netflix-black: #141414;
   --netflix-dark-gray: #222222;
-  --netflix-light-gray: #B3B3B3;
 }
 
 * {
@@ -27,25 +23,9 @@ body {
   color: white;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
 
 /* Custom scrollbar */
@@ -59,137 +39,10 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--netflix-light-gray);
+  background: #888;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff;
-}
-
-/* Custom components */
-.netflix-gradient {
-  background: linear-gradient(
-    180deg,
-    rgba(20, 20, 20, 0.8) 0%,
-    rgba(20, 20, 20, 0.4) 50%,
-    rgba(20, 20, 20, 0.8) 100%
-  );
-}
-
-.hero-background {
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.7)
-  );
-}
-
-.card-hover {
-  transition: all 0.3s ease;
-  transform: translateY(0);
-}
-
-.card-hover:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #E50914, #ff6b6b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.backdrop-blur-custom {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-/* Loading animations */
-.loading-shimmer {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-/* Form styles */
-.input-field {
-  @apply w-full px-4 py-3 bg-netflix-dark-gray border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-netflix-red focus:ring-2 focus:ring-netflix-red focus:ring-opacity-50 transition-all duration-200;
-}
-
-.btn-primary {
-  @apply bg-netflix-red hover:bg-netflix-dark-red text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-netflix-red focus:ring-opacity-50;
-}
-
-.btn-secondary {
-  @apply bg-gray-600 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50;
-}
-
-.btn-outline {
-  @apply border-2 border-netflix-red text-netflix-red hover:bg-netflix-red hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-netflix-red focus:ring-opacity-50;
-}
-
-/* Media card styles */
-.media-card {
-  @apply bg-netflix-dark-gray rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105;
-}
-
-.media-card-image {
-  @apply w-full h-64 object-cover;
-}
-
-.media-card-content {
-  @apply p-4;
-}
-
-.media-card-title {
-  @apply text-lg font-semibold text-white mb-2 line-clamp-2;
-}
-
-.media-card-description {
-  @apply text-sm text-gray-300 line-clamp-3;
-}
-
-/* Utility classes */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Toast overrides */
-.Toaster {
-  --toaster-color: var(--netflix-red);
+  background: #aaa;
 }
